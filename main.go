@@ -20,7 +20,9 @@ func main() {
 
 	lexer := compiler.NewLexer(content)
 	parser := compiler.NewParser(lexer)
-	html := compiler.ParseToHTML(parser)
+	blocks := parser.Parse()
+
+	html := compiler.ParseToHTML(blocks)
 
 	fmt.Println(html)
 }

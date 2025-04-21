@@ -6,10 +6,10 @@ import (
 	"strings"
 )
 
-func ParseToHTML(parser *Parser) string {
+func ParseToHTML(blocks []Block) string {
 	html := strings.Builder{}
 
-	for block := parser.NextBlock(); block.Type != BLK_END; block = parser.NextBlock() {
+	for _, block := range blocks {
 		switch block.Type {
 		case BLK_HEADING:
 			props, valid := block.Props.(BlockHeadingProps)
